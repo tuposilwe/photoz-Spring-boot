@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h2>Photo Upload</h2>
+<input id="fileUpload" type="file" name="fileUpload" />
+<button id="upload-button" onclick="uploadPhoto()">Upload</button>
+<script>
+    async function uploadPhoto(){
+    let formData = new FormData();
+
+    formData.append("data",fileUpload.files[0]);
+    await fetch('http://localhost:8080/photoz',{
+        mode: 'no-cors',
+        method: "POST",
+        body:formData
+    }).then(result => result.text())
+    .then(text => alert(text));
+
+<!--    alert("Photo Uploaded Successfully");-->
+    }
+</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
